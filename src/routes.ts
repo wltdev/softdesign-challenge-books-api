@@ -1,11 +1,21 @@
 import { Router } from 'express'
-import { getBookFactory } from './useCases/GetBook/GetBookFactory'
-import { getBooksFactory } from './useCases/GetBooks/GetBooksFactory'
-import { removeBookFactory } from './useCases/RemoveBook/RemoveBookFactory'
-import { storeBookFactory } from './useCases/StoreBook/StoreBookFactory'
-import { updateBookFactory } from './useCases/UpdateBook/UpdateBookFactory'
+import { signinFactory } from './useCases/auth/Signin/SigninFactory'
+import { signupFactory } from './useCases/auth/Signup/SignupFactory'
+import { getBookFactory } from './useCases/books/GetBook/GetBookFactory'
+import { getBooksFactory } from './useCases/books/GetBooks/GetBooksFactory'
+import { removeBookFactory } from './useCases/books/RemoveBook/RemoveBookFactory'
+import { storeBookFactory } from './useCases/books/StoreBook/StoreBookFactory'
+import { updateBookFactory } from './useCases/books/UpdateBook/UpdateBookFactory'
 
 const router = Router()
+
+router.post('/signup', (request, response, next) =>
+  signupFactory.handle(request, response, next)
+)
+
+router.post('/signin', (request, response, next) =>
+  signinFactory.handle(request, response, next)
+)
 
 router.get('/books', (request, response, next) =>
   getBooksFactory.handle(request, response, next)
