@@ -1,9 +1,12 @@
 import { databaseFactory } from './infra/database/databaseFactory'
 import { app } from './app'
+import { appConfig } from './config'
 
 async function main() {
   await databaseFactory
-  app.listen(3333, () => console.log('Sever is running at port 3333'))
+  app.listen(appConfig.port, () =>
+    console.log(`Sever is running at port ${appConfig.port}`)
+  )
 }
 
 main()

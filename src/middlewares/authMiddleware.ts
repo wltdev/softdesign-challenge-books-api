@@ -1,54 +1,43 @@
 import { Request, Response, NextFunction } from 'express'
 import jwt from 'jsonwebtoken'
 
-// import { PostgresUsersRepository } from '../repositories/implementations/MongodbUsersRepository'
-// import { GetUserUseCase } from './../useCases/GetUser/GetUserUseCase'
 import { appConfig } from '@/config'
-import { User } from '@/entities/User'
-
-export interface IUserRequest extends Request {
-  user?: User
-}
+import { UserModel } from '@/infra/database/mongodb/models/UserModel'
 
 type TOKEN = {
-  id?: string
+  username?: string
 }
 
-export const authMiddleware = async (
-  req: IUserRequest,
-  res: Response,
-  next: NextFunction
-) => {
+export const authMiddleware = async (req: Request, res: Response, next: NextFunction) => {
   const bearer = req.headers.authorization
 
   if (!bearer || !bearer.startsWith('Bearer ')) {
-    return res.status(401).json({ message: 'Unauthorized', status: 401 })
+    return res.status(401).json({ message: 'Invalid token', status: 401 })
   }
 
   const token = bearer.split('Bearer ')[1].trim()
-  let payload: TOKEN
 
   try {
-    payload = await verifyToken(token)
+    const { username }: TOKEN = await verifyToken(token)
+
+    const user = await UserModel.findOne({ username })
+
+    if (!user) {
+      return res.status(401).json({ message: 'Unauthorized', status: 401 })
+    }
+
+    req.user = user
   } catch (e) {
+    console.log(e)
     return res.status(401).json({ message: 'Unauthorized', status: 401 })
   }
 
-  // const postgresUsersRepository = new PostgresUsersRepository()
-  // const getUserUseCase = new GetUserUseCase(postgresUsersRepository)
-
-  // const user = await getUserUseCase.execute(payload.id)
-
-  if (true) {
-    return res.status(401).json({ message: 'Unauthorized', status: 401 })
-  }
-
-  // req.user = {}
   next()
 }
 
 export const verifyToken = (token: string) =>
   new Promise((resolve, reject) => {
+    console.log(appConfig.secrets.jwt)
     jwt.verify(token, appConfig.secrets.jwt, (err: any, payload: unknown) => {
       if (err) return reject(err)
       resolve(payload)

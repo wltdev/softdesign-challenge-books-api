@@ -4,12 +4,12 @@ import { BookModel } from '@/infra/database/mongodb/models/BookModel'
 
 export class MongodbBooksRepository implements IBooksRepository {
   async getList(search: string): Promise<Book[]> {
-    const docs = await BookModel.find()
+    const docs = await BookModel.find().populate('renter')
     return docs
   }
 
   async findById(id: string): Promise<Book> {
-    return BookModel.findById(id)
+    return BookModel.findById(id).populate('renter')
   }
 
   async remove(id: string): Promise<void> {

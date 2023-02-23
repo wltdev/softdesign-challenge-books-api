@@ -18,7 +18,8 @@ const bookSchema = new Schema({
     type: String,
     required: true
   },
-  rent: Boolean
+  rent: Boolean,
+  renter: [{ type: Schema.Types.ObjectId, ref: 'User' }]
 })
 
 export const BookModel = mongoose.model('Book', bookSchema)

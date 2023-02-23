@@ -21,7 +21,7 @@ export class SigninUseCase {
         throw new CustomError('Password is invalid', 400)
       }
 
-      const token = jwt.sign({ username: user.username }, String(appConfig.secrets.jwt), {
+      const token = jwt.sign({ username: user.username }, 'testsecret', {
         expiresIn: appConfig.secrets.jwtExp
       })
 

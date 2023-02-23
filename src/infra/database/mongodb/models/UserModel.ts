@@ -21,8 +21,8 @@ userSchema.pre('save', async function (next) {
   next()
 })
 
-// userSchema.pre('findOneAndUpdate', async function (next) {
-//   const payload = this.getUpdate().$set
+// userSchema.pre('findOneAndRent', async function (next) {
+//   const payload = this.getRent().$set
 
 //   if (payload.password && payload.password.length >= 6) {
 //     payload.password = await hash(payload.password, 10)
