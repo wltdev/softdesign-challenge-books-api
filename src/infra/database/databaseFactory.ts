@@ -15,4 +15,4 @@ async function factory() {
   })()
 }
 
-export const mongodbFactory = factory()
+export const databaseFactory = factory()

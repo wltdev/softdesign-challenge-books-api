@@ -10,7 +10,7 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 app.use('/api', authMiddleware)
-app.use(errorMiddleware)
 app.use(router)
+app.use(errorMiddleware)
 
 export { app }
