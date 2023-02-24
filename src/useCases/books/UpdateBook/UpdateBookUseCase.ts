@@ -8,7 +8,7 @@ export class UpdateBookUseCase {
   async execute(id: string, payload: IUpdateBookDto) {
     const book = await this.booksRepository.findById(id)
 
-    if (book.rent) {
+    if (book.renter) {
       throw new CustomError('That book was rented. Impossible to update')
     }
 

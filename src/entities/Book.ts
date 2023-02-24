@@ -6,5 +6,5 @@ export class Book {
   public author: string
   public price: string
   public rent?: boolean
-  public renter?: User | any
+  public renter?: any
 }

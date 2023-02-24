@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1677190549796" clover="3.2.0">
-  <project timestamp="1677190549796" name="All files">
-    <metrics statements="54" coveredstatements="33" conditionals="3" coveredconditionals="2" methods="4" coveredmethods="2" elements="61" coveredelements="37" complexity="0" loc="54" ncloc="54" packages="2" files="2" classes="2"/>
+<coverage generated="1677234499363" clover="3.2.0">
+  <project timestamp="1677234499363" name="All files">
+    <metrics statements="58" coveredstatements="37" conditionals="3" coveredconditionals="2" methods="4" coveredmethods="2" elements="65" coveredelements="41" complexity="0" loc="58" ncloc="58" packages="2" files="2" classes="2"/>
     <package name="middlewares">
       <metrics statements="38" coveredstatements="19" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
       <file name="errorMiddleware.ts" path="/home/wltdev/Projects/softdesign-tech-test/src/middlewares/errorMiddleware.ts">
@@ -46,26 +46,30 @@
         <line num="38" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="useCases.books.RentBook">
-      <metrics statements="16" coveredstatements="14" conditionals="3" coveredconditionals="2" methods="2" coveredmethods="2"/>
-      <file name="RentBookUseCase.ts" path="/home/wltdev/Projects/softdesign-tech-test/src/useCases/books/RentBook/RentBookUseCase.ts">
-        <metrics statements="16" coveredstatements="14" conditionals="3" coveredconditionals="2" methods="2" coveredmethods="2"/>
+    <package name="useCases.books.UnRentBook">
+      <metrics statements="20" coveredstatements="18" conditionals="3" coveredconditionals="2" methods="2" coveredmethods="2"/>
+      <file name="UnRentBookUseCase.ts" path="/home/wltdev/Projects/softdesign-tech-test/src/useCases/books/UnRentBook/UnRentBookUseCase.ts">
+        <metrics statements="20" coveredstatements="18" conditionals="3" coveredconditionals="2" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="7" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="8" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="9" count="1" type="stmt"/>
-        <line num="10" count="1" type="cond" truecount="0" falsecount="1"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
         <line num="15" count="1" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
+        <line num="16" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
       </file>
     </package>
   </project>

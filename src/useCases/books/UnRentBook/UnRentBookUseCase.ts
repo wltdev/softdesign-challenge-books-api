@@ -2,19 +2,13 @@ import { Book } from '@/entities/Book'
 import { CustomError } from '@/middlewares/errorMiddleware'
 import { IBooksRepository } from '@/repositories/IBooksRespository'
 
-export class RentBookUseCase {
+export class UnRentBookUseCase {
   constructor(private booksRepository: IBooksRepository) {}
 
-  async execute(id: string, renter: string | null) {
+  async execute(id: string) {
     try {
-      const book = await this.booksRepository.findById(id)
-
-      if (book.renter) {
-        throw new CustomError('That book was rented by other user', 400)
-      }
-
       const payload = {
-        renter
+        renter: null
       } as Book
 
       const doc = await this.booksRepository.update(id, payload)

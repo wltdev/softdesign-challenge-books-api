@@ -29,7 +29,7 @@ export const authMiddleware = async (req: Request, res: Response, next: NextFunc
     req.user = user
   } catch (e) {
     console.log(e)
-    return res.status(401).json({ message: 'Unauthorized', status: 401 })
+    return res.status(401).json({ message: e.message, status: 401 })
   }
 
   next()
@@ -37,8 +37,7 @@ export const authMiddleware = async (req: Request, res: Response, next: NextFunc
 
 export const verifyToken = (token: string) =>
   new Promise((resolve, reject) => {
-    console.log(appConfig.secrets.jwt)
-    jwt.verify(token, appConfig.secrets.jwt, (err: any, payload: unknown) => {
+    jwt.verify(token, String(appConfig.secrets.jwt), (err: any, payload: unknown) => {
       if (err) return reject(err)
       resolve(payload)
     })

@@ -7,7 +7,7 @@ export class RemoveBookUseCase {
   async execute(id: string) {
     const book = await this.booksRepository.findById(id)
 
-    if (book.rent) {
+    if (book.renter) {
       throw new CustomError('That book was rented. Impossible to remove')
     }
 
