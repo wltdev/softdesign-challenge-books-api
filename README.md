@@ -24,47 +24,53 @@ $ yarn test
 
 ## End points
 
-#### `Signup`
+### Signup
+
+`POST /signup`
 
 ```
-
-POST /signup
+body
 {
-"username": "",
-"password": ""
+  "username": "",
+  "password": ""
 }
 
 response
 {
-user,
-token: jwt
+  user,
+  token: jwt
 }
 
 ```
 
-#### `Signin`
+### Signin
+
+`POST /signin`
 
 ```
-
-POST /signin
+body
 {
-"username": "",
-"password": ""
+  "username": "",
+  "password": ""
 }
 
 response
 {
-user,
-token: jwt
+  user,
+  token: jwt
 }
 ```
 
-#### `Books list`
+### Books list
+
+`GET /books`
 
 ```
-GET /books
 header : {
   Authorization: Bearer ${token}
+}
+query: {
+  search?: string
 }
 
 response
@@ -79,19 +85,17 @@ response
 
 ```
 
-#### `Create new Book`
+### Create new Book
+
+`POST /books`
 
 ```
-POST /books
 header : {
   Authorization: Bearer ${token}
 }
 
-query: {
-  search?: string
-}
-
-data: {
+body
+{
   "title": "book title",
   "description": "book description",
   "price": "100",
@@ -105,15 +109,17 @@ response
 
 ```
 
-#### `Update Book`
+### Update Book
+
+`PUT /books/:id`
 
 ```
-PUT /books/:id
 header : {
   Authorization: Bearer ${token}
 }
 
-data: {
+body
+{
   "title": "book title edited",
   "description": "book description edited",
   "price": "50",
@@ -126,10 +132,11 @@ response
 }
 ```
 
-#### `Delete Book`
+### Delete Book
+
+`DELETE /books/:id`
 
 ```
-DELETE /books/:id
 header : {
   Authorization: Bearer ${token}
 }
@@ -140,10 +147,11 @@ response
 
 ```
 
-#### `Rent a Book`
+### Rent a Book
+
+`PUT /books/rent/:id`
 
 ```
-PUT /books/rent/:id
 header : {
   Authorization: Bearer ${token}
 }
@@ -158,10 +166,11 @@ response
 
 ```
 
-#### `UnRent a Book`
+### UnRent a Book
+
+`PUT /books/unrent/:id`
 
 ```
-PUT /books/unrent/:id
 header : {
   Authorization: Bearer ${token}
 }
