@@ -10,20 +10,23 @@ $ yarn install
 
 ## Running the app
 
-````bash
+```bash
 # development
 $ yarn start
+```
 
 ## Test
 
 ```bash
 # unit tests
 $ yarn test
+```
 
 ## End points
 
 #### `Signup`
-````
+
+```
 
 POST /signup
 {
@@ -40,6 +43,7 @@ token: jwt
 ```
 
 #### `Signin`
+
 ```
 
 POST /signin
@@ -53,6 +57,7 @@ response
 user,
 token: jwt
 }
+```
 
 #### `Books list`
 
@@ -82,6 +87,10 @@ header : {
   Authorization: Bearer ${token}
 }
 
+query: {
+  search?: string
+}
+
 data: {
   "title": "book title",
   "description": "book description",
@@ -90,8 +99,8 @@ data: {
 
 response
 {
-   _id: "",
-  ...book
+  ...book,
+   _id: ObjectId()
 }
 
 ```
@@ -112,8 +121,8 @@ data: {
 
 response
 {
-   _id: "",
   ...book
+   _id: ObjectId(),
 }
 ```
 
